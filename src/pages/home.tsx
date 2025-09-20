@@ -1,8 +1,8 @@
+import PokeTable from "../components/pokeTable"
+
 const Home = () => {
     return (
-        <>
-            <h1>Home</h1>
-        </>
+        <PokeTable />
     )
 }
 
