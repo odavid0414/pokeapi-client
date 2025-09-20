@@ -1,0 +1,31 @@
+.wrapper {
+  min-height: 900px;
+  height: 100vh;
+  background-size: cover;
+  background-image: url("/src/assets/hero_1.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.form {
+  border-right: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-7));
+  min-height: 900px;
+  height: 100vh;
+  max-width: 520px;
+  padding-top: 120px !important;
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    max-width: 100%;
+  }
+}
+.form button {
+  font-size: 18px;
+  letter-spacing: 0.5px;
+}
+.title {
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  font-size: 30px;
+  font-family:
+    Greycliff CF,
+    var(--mantine-font-family);
+}

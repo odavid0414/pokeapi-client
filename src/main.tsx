@@ -5,6 +5,8 @@ import { ModalsProvider } from '@mantine/modals';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider as ReduxProvider } from 'react-redux';
 import store from './store/store.ts';
+import '@mantine/core/styles.css';
+import '@mantine/notifications/styles.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
