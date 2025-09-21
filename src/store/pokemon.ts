@@ -39,9 +39,9 @@ export const pokemonApi = createApi({
       transformResponse: (res: any): Paged<Pokemon> => {
         return {
           items: res.map((p:any) => ({
-            id: p.id,
+            id: p.pokemon.id,
             name: p.pokemon.name,
-            sprite_front_default: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${p.id}.png`
+            sprite_front_default: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${p.pokemon.id}.png`
           })),
           total: res.length,
         };

@@ -46,8 +46,8 @@ export default function CaughtPokemonsTable() {
 
     const navigate = useNavigate();
 
-    const items = useMemo(() => { console.log("data",data);  return (data?.items ?? allPokemons?.items) as Pokemon[] }, [data, allPokemons.items]);
-    const total = useMemo(() => data?.total ?? allPokemons?.count, [data, allPokemons.count]);
+    const items = useMemo(() => (isMyList ? data?.items : allPokemons?.items) as Pokemon[], isMyList ? [data] : [allPokemons.items]);
+    const total = useMemo(() => isMyList ? data?.total : allPokemons?.count, isMyList ? [data] : [allPokemons.count]);
 
     useEffect(() => {
         setPage(1);

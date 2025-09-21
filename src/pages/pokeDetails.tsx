@@ -32,7 +32,7 @@ const PokeDetails = () => {
     else if (pokemon) setSelectedPokemon(pokemon);
   }, [myPokemon, pokemon]);
 
-  if (!selectedPokemon || isLoading) return <Text ta="center">Loading...</Text>;
+  if (!selectedPokemon || isLoading || isLoadingPokemon) return <Text ta="center">Loading...</Text>;
 
   const handleCatch = async () => {
     try {
