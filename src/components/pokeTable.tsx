@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { ActionIcon, Box, Group, Loader, Text, TextInput, Tooltip, Button, Select, Switch, Image } from "@mantine/core";
+import { ActionIcon, Group, Loader, Text, TextInput, Tooltip, Select, Switch, Image, Flex } from "@mantine/core";
 import { useDebouncedValue } from "@mantine/hooks";
 import { DataTable, type DataTableSortStatus } from "mantine-datatable";
 import { MdRefresh, MdSearch, MdOpenInNew } from "react-icons/md";
@@ -54,7 +54,7 @@ export default function CaughtPokemonsTable() {
     }, [debouncedSearch, pageSize, sort.columnAccessor, sort.direction, selectedType]);
 
     return (
-        <Box w={"100%"} p="md">
+        <Flex w={"100%"} p="md" direction={"column"} align={"center"}>
             <Group justify="space-between" align="center" mb="sm">
                 <Group wrap="nowrap">
                     <TextInput
@@ -82,24 +82,8 @@ export default function CaughtPokemonsTable() {
                     onLabel="Show my list" offLabel="Show Global list" onChange={(e) => setIsMyList(e.currentTarget.checked)} color="green" />
             </Group>
 
-            {selectedType && pokemonsByType ? (
-                <Box my="sm">
-                    <Text size="sm" c="dimmed">Pokemons of type {selectedType} (from public API):</Text>
-                    <Group gap="xs" wrap="wrap" mt={4}>
-                        {pokemonsByType.pokemon.map((_, index: number) => {
-                            return (
-                                <Group key={index} gap="xs">
-                                    <Button size="compact-sm" variant="default" onClick={() => navigate(`/pokemon/${name}`)}>
-                                        View
-                                    </Button>
-                                </Group>
-                            );
-                        })}
-                    </Group>
-                </Box>
-            ) : null}
-
             <DataTable
+                miw={1200}
                 highlightOnHover={true}
                 fetching={isLoading || isFetching}
                 records={items}
@@ -119,7 +103,7 @@ export default function CaughtPokemonsTable() {
                     {
                         accessor: "sprite_front_default",
                         title: "",
-                        width: 75,
+                        width: 100,
                         render: (p) => (
                             <Image
                                 src={
@@ -144,11 +128,11 @@ export default function CaughtPokemonsTable() {
                                 <Tooltip label="Open details">
                                     <ActionIcon
                                         variant="subtle"
-                                        size="lg"
+                                        size="xl"
                                         aria-label="Details"
                                         onClick={() => navigate(`/pokeDetails/${p.id}`)}
                                     >
-                                        <MdOpenInNew />
+                                        <MdOpenInNew size={24} />
                                     </ActionIcon>
                                 </Tooltip>
                             </Group>
@@ -156,6 +140,6 @@ export default function CaughtPokemonsTable() {
                     },
                 ]}
             />
-        </Box>
+        </Flex>
     );
 }
